@@ -23,7 +23,7 @@ std::vector<Sprite *> SampleStartScene::sprites() {
 }
 
 void SampleStartScene::load() {
-    foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(sharedPal, sizeof(sharedPal)));
+    foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(StartPal, sizeof(StartPal)));
     backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager());
 
     SpriteBuilder<Sprite> builder;

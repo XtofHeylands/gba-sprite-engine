@@ -94,7 +94,7 @@ To create your own scene, subclass `Scene` and implement:
 4. `void tick(u16 keys)`: gets called each engine `update()`
 5. set `foregroundPalette` and `backgroundPalette` in your load.
 
-Loading up a scene usually involves creating some sprites with the builder. Don't forget to set the palettes like this: `std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(sharedPal, sizeof(sharedPal)));`
+Loading up a scene usually involves creating some sprites with the builder. Don't forget to set the palettes like this: `std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(StartPal, sizeof(StartPal)));`
 
 The `sprites()` method gets periodically called to check whether something has been added or deleted and updates the VRAM and OAM accordingly. **You don't need to manage anything yourself!** Take a look at demo 3.
 
@@ -137,7 +137,7 @@ Creating sprites is easy with the `SpriteBuilder`. Specify what kind of sprite y
 
 Sample rotation demo 3.
 
-**Sprite animation is built-in**! Just feed your sprite data to the builder and use `.withAnimated(amountOfFrames, frameDelay)`. Remember to position each frame in one column in the image itself (vertically). Like this:
+**Sprite animation is built-in**! Just feed your sprite data to the builder and use `.withAnimated(amountOfFrames, frameDelay)`. Remember to charPosition each frame in one column in the image itself (vertically). Like this:
 
 ![lama gif example](https://github.com/wgroeneveld/gba-sprite-engine/blob/master/demos/demo1-basicfeatures/img/lama.png?raw=true)
 

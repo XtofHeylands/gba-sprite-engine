@@ -22,7 +22,7 @@ std::vector<Background *> FlyingStuffScene::backgrounds() {
 }
 
 void FlyingStuffScene::load() {
-    foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(sharedPal, sizeof(sharedPal)));
+    foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(StartPal, sizeof(StartPal)));
     backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(bg_palette, sizeof(bg_palette)));
 
     SpriteBuilder<Sprite> builder;

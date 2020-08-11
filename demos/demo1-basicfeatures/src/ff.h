@@ -26,7 +26,7 @@ const unsigned int lopen_jongenTiles[128] __attribute__((aligned(4)))=
                 0x1E1E1F20,0x1C1D251E,0x1E212925,0x1D252323,0x1D232121,0x1D29231E,0x1C1D2925,0x1C1D1D1D,
         };
 
-const unsigned short sharedPal[44] __attribute__((aligned(4)))=
+const unsigned short StartPal[44] __attribute__((aligned(4)))=
         {
                 0x033A,0x0C85,0x0489,0x08AB,0x08AB,0x08CA,0x04CB,0x08CB,
                 0x150E,0x0532,0x1D8C,0x1592,0x1578,0x1DCE,0x11B6,0x25EF,
