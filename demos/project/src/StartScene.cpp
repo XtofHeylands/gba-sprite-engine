@@ -39,7 +39,7 @@ void StartScene::load() {
             .withLocation(88,110)
             .buildPtr();
 
-    engine -> enqueueMusic(startScreenSound, startScreenSound_bytes);
+    engine -> enqueueMusic(startScreenSound, startScreenSound_bytes, 45000);
 }
 
 void StartScene::tick(u16 keys) {

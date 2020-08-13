@@ -11,11 +11,11 @@
 #include "CharSelectScene.h"
 #include "recourses/sounds/backgroundMusic.h"
 #include "recourses/backgrounds/charSelectScreen.h"
-#include "recourses/sprites/marioSel.h"
-#include "recourses/sprites/luigiSel.h"
-#include "recourses/sprites/peachSel.h"
-#include "recourses/sprites/yoshiSel.h"
-#include "recourses/sprites/handSel.h"
+#include "recourses/sprites/mario.h"
+#include "recourses/sprites/luigi.h"
+#include "recourses/sprites/peach.h"
+#include "recourses/sprites/yoshi.h"
+#include "recourses/sprites/hand.h"
 #include "StartScene.h"
 #include "MainGameScene.h"
 
@@ -35,7 +35,7 @@ void CharSelectScene::load() {
     backgroundPalette = std::unique_ptr<BackgroundPaletteManager>(new BackgroundPaletteManager(charSelectPal, sizeof(charSelectPal)));
     foregroundPalette = std::unique_ptr<ForegroundPaletteManager>(new ForegroundPaletteManager(charSelectSharedPal, sizeof(charSelectSharedPal)));
 
-    bg = std::unique_ptr<Background>(new Background(1, charSelectTiles, sizeof(charSelectTiles), charSelectMap, sizeof(charSelectMap), 1, 1, MAPLAYOUT_32X32));
+    bg = std::unique_ptr<Background>(new Background(1, charSelectTiles, sizeof(charSelectTiles), charSelectMap, sizeof(charSelectMap), 16, 1, MAPLAYOUT_32X32));
 
     SpriteBuilder<Sprite> builder;
 
@@ -69,7 +69,7 @@ void CharSelectScene::load() {
             .withLocation(55, 40)
             .buildPtr();
 
-    engine -> enqueueMusic(backgroundMusic, backgroundMusic_bytes);
+    engine -> enqueueMusic(backgroundMusic, backgroundMusic_bytes, 45000);
 }
 
 void CharSelectScene::tick(u16 keys) {
@@ -99,10 +99,10 @@ void CharSelectScene::tick(u16 keys) {
 
         if (pressingA && !(keys & KEY_A)){
 
-            TextStream::instance().setText("are you sure?",14,9);
+            TextStream::instance().setText(" are you sure?",13,8);
             TextStream::instance().setFontColor(BLD_BLACK);
 
-            TextStream::instance().setText(" yes", 15,11);
+            TextStream::instance().setText(" yes", 15,10);
             TextStream::instance().setFontColor(BLD_BLACK);
 
             TextStream::instance().setText(">no", 15,17);
@@ -123,18 +123,18 @@ void CharSelectScene::tick(u16 keys) {
     } else {
         if ((pressingLeft && !(keys & KEY_LEFT)) || (pressingRight && !(keys & KEY_RIGHT))) {
             TextStream::instance().clear();
-            TextStream::instance().setText("are you sure?",14,9);
+            TextStream::instance().setText(" are you sure?",13,8);
             TextStream::instance().setFontColor(BLD_BLACK);
 
             if(!confirmation){
-                TextStream::instance().setText(">yes", 15,11);
+                TextStream::instance().setText(">yes", 15,10);
                 TextStream::instance().setFontColor(BLD_BLACK);
 
                 TextStream::instance().setText(" no", 15,17);
                 TextStream::instance().setFontColor(BLD_BLACK);
                 confirmation = true;
             } else {
-                TextStream::instance().setText(" yes", 15,11);
+                TextStream::instance().setText(" yes", 15,10);
                 TextStream::instance().setFontColor(BLD_BLACK);
 
                 TextStream::instance().setText(">no", 15,17);
