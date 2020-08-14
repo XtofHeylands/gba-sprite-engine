@@ -14,22 +14,26 @@
 class MiniGameScene : public Scene {
 private:
     std::unique_ptr<Background> miniGameBg;
-    std::unique_ptr<Sprite> player;
+    std::unique_ptr<AffineSprite> player;
 
-    std::unique_ptr<AffineSprite> projectile1;
-    std::unique_ptr<AffineSprite> projectile2;
+    std::unique_ptr<Sprite> projectile;
+    std::vector<std::unique_ptr<Sprite>> projectiles = {};
 
     CharSelectScene::CharSelection character;
 
+    int projectileCooldown = 3;
     int lives;
-    int score;
-    int pos;
+    int score = 0;
+    int pos = 1;
     bool pressedUp, pressedDown, pressedA;
-    bool dead;
+    bool dead = false;
+    bool won = false;
 
     int savedScore;
     int savedPosX;
     int savedPosY;
+
+    std::unique_ptr<SpriteBuilder<Sprite>> spriteBuilder;
 
 public:
     MiniGameScene(const std::shared_ptr<GBAEngine> &engine);
@@ -45,6 +49,12 @@ public:
     void setData(int i, int i1, int i2, int i3);
 
     void youDied();
+
+    void removeProjectiles();
+
+    std::unique_ptr<Sprite> createProjectile();
+
+    void youWon();
 };
 
 #endif //GBA_SPRITE_ENGINE_PROJECT_MINIGAMESCENE_H

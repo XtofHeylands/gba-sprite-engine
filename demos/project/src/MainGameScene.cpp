@@ -42,7 +42,7 @@ void MainGameScene::load() {
         player = affineBuilder
                 .withData(marioTiles, sizeof(marioTiles))
                 .withSize(SIZE_32_64)
-                .withLocation(72,273)
+                .withLocation(72 + (posX*16),225 + (posY*16))
                 .buildPtr();
 
     } else if(character == CharSelectScene::luigi_char){
@@ -51,7 +51,7 @@ void MainGameScene::load() {
         player = affineBuilder
                 .withData(luigiTiles, sizeof(luigiTiles))
                 .withSize(SIZE_32_64)
-                .withLocation(72,273)
+                .withLocation(72 + (posX*16),225 + (posY*16))
                 .buildPtr();
 
     } else if(character == CharSelectScene::peach_char){
@@ -63,12 +63,6 @@ void MainGameScene::load() {
     player->makeAnimated(0,2,10);
     engine -> enqueueMusic(ShroomCityMusic, ShroomCityMusic_bytes, 45000);
 
-    lives = 3;
-    score = 0;
-    direction = right;
-
-    posX = 0;
-    posY = 3;
 }
 
 void MainGameScene::tick(u16 keys) {

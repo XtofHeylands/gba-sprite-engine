@@ -37,7 +37,7 @@ void GameOverScene::load() {
 
 void GameOverScene::tick(u16 keys) {
     TextStream::instance().clear();
-    TextStream::instance().setText("final score: " + std::to_string(finalScore),7,12);
+    TextStream::instance().setText("final score: " + std::to_string(finalScore),13,7);
 }
 
 void GameOverScene::setFinalScore(int score) {

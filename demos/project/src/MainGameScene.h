@@ -18,13 +18,14 @@ private:
     CharSelectScene::CharSelection character;
 
     enum Direction {up, down, left, right};
-    Direction direction;
+    Direction direction = right;
 
     bool pressingA, pressingB, pressingUp, pressingDown, pressingRight, pressingLeft;
     bool alive;
     bool idle;
 
-    int  lives, score;
+    int lives = 3;
+    int score = 0;
 
     //1 = nothing, 2 = skip turn, 3 = roll again, 4 = minigame
     int featureMap [7][9] =   {{ 0, 1, 1, 3, 4, 1, 0, 0, 0},
@@ -35,7 +36,8 @@ private:
                                { 0, 0, 1, 0, 0, 0, 0, 1, 0},
                                { 0, 0, 1, 4, 3, 3, 1, 2, 0}};
 
-    int posX, posY;
+    int posX = 0;
+    int posY = 3;
 
 
 public:
